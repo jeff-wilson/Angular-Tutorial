@@ -13,3 +13,7 @@ Navigate your browser to `http://localhost:8000/` to see the app running in your
 
 
 Adding in some information 
+
+
+
+Adding some information for feature 2
