@@ -1,0 +1,92 @@
+﻿<!--
+- more comprehensive validation
+- implement ng-cloak
+-user a filter to display and icon for the session level instead
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+<head>
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/underscore-1.4.4.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-sanitize.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/EventController.js"></script>
+    <script src="js/controllers/EditEventController.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="js/services/EventData.js"></script>
+
+    <script src="js/filters.js"></script>
+
+
+    <title>New Event</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+
+    <script type="text/javascript">
+
+
+    </script>
+
+    <style>
+        input.ng-invalid.ng-dirty {border-color: yellow; border-width: 5px}
+    </style>
+</head>
+<body ng-cloak>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="/NewEvent.html">Create Event</a></li>
+                </ul>
+            </div>
+        </div>
+        <div ng-controller="EditEventController">
+            <div class="container"></div>
+            <h1>New Event</h1>
+            <hr></hr>
+            <form name="newEventForm">
+                <fieldset>
+                    <label for="eventName">Event Name:</label>
+                    <input id="eventName" required ng-model="event.name" type="text" placeholder="Name of your event..."/>
+
+                    <label for="eventDate">Event Date:</label>
+                    <input id="eventDate" required ng-pattern="/\d\d/\d\d/\d\d\d\d/" ng-model="event.date" type="text" placeholder="mm/dd/yyyy" />
+
+                    <label for="eventTime">Event Time:</label>
+                    <input id="eventTime" ng-model="event.time" type="text" placeholder="star and end time" />
+
+                    <label for="eventLocation">Event Location:</label>
+                    <input id="eventLocation" ng-model="event.location.address" type="text" placeholder="Location of your event..." />
+                    <br/>
+
+                    <input id="eventCity" ng-model="event.city" type="text" class="input-small" placeholder="City" />
+                    <input id="eventState" ng-model="event.state" type="text" class="input-small" placeholder="State" />
+
+                    <label for="eventImageUrl">Image:</label>
+                    <input id="eventImageUrl" ng-model="event.imageUrl" type="url" class="input-xlarge" placeholder="Url of Image" />
+
+                </fieldset>
+
+                <img ng-src="{{event.imageUrl}}" src=""/>
+                <br/>
+                <br/>
+
+                <button type="submit" ng-disabled="newEventForm.$invalid" class="btn btn-primary" ng-click="saveEvent(event, newEventForm)">Save</button>
+                <button type="button" class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>
