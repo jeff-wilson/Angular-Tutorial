@@ -1,2 +1,0 @@
-﻿Directives - 4 ways to write, tag, attr, class, html commment, enhance html tags 
-
